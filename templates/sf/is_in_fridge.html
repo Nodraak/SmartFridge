@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>In the fridge</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends 'sf/base.html' %}
 
-  <link rel="stylesheet" href="/Users/florian/Documents/SmartFridge/assets/css/bootstrap-theme.css">
-  <link rel="stylesheet" href="/Users/florian/Documents/SmartFridge/assets/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="/Users/florian/Documents/SmartFridge/assets/css/bootstrap.css">
-  <link rel="stylesheet" href="/Users/florian/Documents/SmartFridge/assets/css/bootstrap.min.css">
-
-  <script src="/Users/florian/Documents/SmartFridge/assets/js/bootstrap.js"></script>
-  <script src="/Users/florian/Documents/SmartFridge/assets/js/bootstrap.min.js"></script>
-  <script src="/Users/florian/Documents/SmartFridge/assets/js/npm.js"></script>
-</head>
-
-<body>
-
+{% block content %}
   <div class="row">
     <div class="col-sm-12">
       <h2>Que cherchez-vous ?</h2>
@@ -34,7 +18,7 @@
       </div>
       <div class="col-sm-4"></div>
     </div>
-      
+
     <div class="row">
 
       <div class="col-sm-4">
@@ -63,6 +47,4 @@
     </div>
 
   </form>
-
-</body>
-</html>
+{% endblock %}
