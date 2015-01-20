@@ -1,10 +1,27 @@
 {% extends 'sf/base.html' %}
 
 {% block content %}
-		<nav  >
-			<div class="bouton"><a href="#">Ajout par scan</a></div>
-			<div class="bouton"><a href="#">Ajout manuel</a></div>
+<div class="container row" >
+<h2 style="text-align:center">Entrez les informations du nouveau produit</h2>
+	<div class="col-sm-4"></div>
+	<div class="col-sm-4">
+		<form role="form">
+			<div class="form-group">
+			    <label for="name">Nom:</label>
+  			  <input type="text" class="form-control" id="name">
+  			</div>
+  			<div class="form-group">
+    			<label for="number">Nombre:</label>
+    			<input type="number" class="form-control" id="number">
+  			</div>
+  			<div class="form-group">
+			    <label for="peremption">Date de péremption:</label>
+  			  <input type="date" class="form-control" id="peremption">
+  			</div>
 
-		</nav>
+		</form>
+		</div>
+	<div class="col-sm-4"></div>
+</div>
 
 {% endblock %}
