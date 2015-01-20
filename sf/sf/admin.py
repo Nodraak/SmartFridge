@@ -3,8 +3,7 @@
 
 from django.contrib import admin
 
-from .models import Position, Product
+from .models import Product
 
 
-admin.site.register(Position)
 admin.site.register(Product)
