@@ -1,5 +1,43 @@
 {% extends 'sf/base.html' %}
 
 {% block content %}
+<div class="row" style="padding: 10% 0 0 0;">
+    <div class="col-sm-12 text-center">
+      <h2>Quelle recette cherchez-vous ?</h2>
+    </div>
+</div>
+
+<div class="row">
+
+  <div class="col-sm-4 text-center">
+<!--     <a href="http://127.0.0.1:8000/sf/new/"> <span class="glyphicon glyphicon-circle-arrow-left"></span> </a>
+ -->  </div>
+
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label for="ingrdt">Emplacement:</label>
+      <input type="ingredient" class="form-control" id="ingrdt" placeholder="Entrez les ingredients un par un">
+    </div>
+  </div>
+
+  <div class="col-sm-4 text-center">
+<!--     <a href="http://127.0.0.1:8000/sf/"> <span class="glyphicon glyphicon-circle-arrow-right"></span> </a>
+ -->  </div>
+
+</div>
+
+<div class="row">
+
+	<div class="col-sm-4 text-center">
+    <a href="http://127.0.0.1:8000/sf/new/"> <span class="glyphicon glyphicon-circle-arrow-left"></span> </a>
+  </div>
+
+  <div class="col-sm-4"> </div>
+  
+  <div class="col-sm-4 text-center">
+    <a href="http://127.0.0.1:8000/sf/"> <span class="glyphicon glyphicon-circle-arrow-right"></span> </a>
+  </div>
+
+</div>
 
 {% endblock %}
