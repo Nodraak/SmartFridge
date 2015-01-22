@@ -5,6 +5,8 @@ from django.shortcuts import render
 
 # Create your views here.
 
+def index(request):
+    return render(request, 'sf/index.html')
 
 # trouver si produit est ds le frigo
 def is_in_fridge(request):

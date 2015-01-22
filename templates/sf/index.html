@@ -1,53 +1,39 @@
 {% extends 'sf/base.html' %}
 
 {% block content %}
+
 <div class="container">
 <div class="jumbotron">
 
-  <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4 text-center">
-      <a href="#"><button type="button" class="btn btn-primary">Accueil</button></a>
-    </div>
-    <div class="col-sm-4"></div>
+  <div class="row" style="margin: 10% 0 0 0;">
+
+  <div class="col-sm-3 text-center">           
+    <a href="http://127.0.0.1:8000/sf/find_recipe/"> <span class="glyphicon glyphicon-circle-arrow-left"></span> </a>
   </div>
 
-  <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4 text-center">
-      <button type="button" class="btn btn-primary">Find Recipe</button>
+    <div class="col-sm-2 text-right">
+      <a href="http://127.0.0.1:8000/sf/find_recipe/">
+        <button type="button" class="btn btn-primary"> Find Recipe </button>
+      </a>
     </div>
-    <div class="col-sm-4"></div>
+
+    <div class="col-sm-2 text-center">
+      <a href="http://127.0.0.1:8000/sf/new/">
+        <button type="button" class="btn btn-primary"> New Product </button>
+      </a>
+    </div>
+
+    <div class="col-sm-2">
+      <a href="http://127.0.0.1:8000/sf/is_in_fridge/">
+        <button type="button" class="btn btn-primary"> Find Product </button>
+      </a>
+    </div>
+
+  <div class="col-sm-3 text-center">           
+    <a href="http://127.0.0.1:8000/sf/is_in_fridge/"> <span class="glyphicon glyphicon-circle-arrow-right"></span> </a>
   </div>
 
-  <div class="row">
-    <div class="col-sm-4 text-center">
-      <a href="get.html"> <span class="glyphicon glyphicon-circle-arrow-left"></span> </a>
-    </div>
-    <div class="col-sm-4 text-center">
-      <a href="get.html"><button type="button" class="btn btn-primary">Get Product</button></a>
-    </div>
-    <div class="col-sm-4 text-center">
-      <a href="is_in_fridge.html"> <span class="glyphicon glyphicon-circle-arrow-right"></span> </a>
-    </div>
   </div>
-
-  <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4 text-center">
-      <button type="button" class="btn btn-primary">Find Product</button>
-    </div>
-    <div class="col-sm-4"></div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4 text-center">
-      <button type="button" class="btn btn-primary">New Product</button>
-    </div>
-    <div class="col-sm-4"></div>
-  </div>
-
 </div>
 </div>
 {% endblock %}
