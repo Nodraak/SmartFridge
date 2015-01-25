@@ -39,15 +39,27 @@ class Product(models.Model):
     calorie = models.PositiveSmallIntegerField()
 
 
+class ArduiSerialError(Exception):
+    pass
+
+class MoveError(ArduiSerialError):
+    pass
+
+class SensorError(ArduiSerialError):
+    pass
+
+class ResponseError(ArduiSerialError):
+    pass
+
 class ArduiSerial(object):
 
-    def __init__(self):
+    def __init__(self, port, bauds=9600, timeout=1):
         self.STATUS_SUCCESS = 0
         self.STATUS_INVALID = 1
         self.STATUS_FALSE = 2
         self.STATUS_TRUE = 3
 
-        self.ser = serial.Serial('/dev/tty.usbmodem1411', 9600, timeout=1)
+        self.ser = serial.Serial(port, bauds, timeout=timeout)
 
     def __del__(self):
         self.ser.close()
@@ -57,37 +69,36 @@ class ArduiSerial(object):
         ret = self.ser.read()
 
         if ret == 0b10101010:  # success
-            self.STATUS_SUCCESS
+            return self.STATUS_SUCCESS
         elif ret == 0b11111111:  # invalid request
-            self.STATUS_INVALID
+            raise ResponseError('Invalid request')
+            return self.STATUS_INVALID
         elif ret == 0b00000000:  # false / off
-            self.STATUS_FALSE
+            return self.STATUS_FALSE
         elif ret == 0b00000001:  # true / on
-            self.STATUS_TRUE
+            return self.STATUS_TRUE
 
     def order_move(self, x, y):
         x, y = int(x), int(y)
         if x < 0 or x > 7 or y < 0 or y > 7:
-            print 'error'
-            exit()
+            raise MoveError('Parameters not in bounds')
         else:
             order = (0b00 << 6) | (x << 3) | y
-            self._order_send(order)
+            return self._order_send(order)
 
     def order_cooling(self, value):
         value = bool(value)
         order = (0b01 << 6) | value
-        self._order_send(order)
+        return self._order_send(order)
 
     def get_cooling(self):
         order = (0b01 << 6) | 0b10
-        self._order_send(order)
+        return self._order_send(order)
 
     def get_sensors(self, id):
         id = int(id)
         if id < 0 or id > 3:
-            print 'error'
-            exit()
+            raise SensorError('Parameter not in bounds')
         order = 0b10 | id
-        self._order_send(order)
+        return self._order_send(order)
 
