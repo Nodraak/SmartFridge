@@ -1,3 +1,8 @@
+body{
+	background: rgb(200,200,200);
+	color: rgb(0,120,200);
+}
+
 #marque
 {
 	font-family: chalkduster;
@@ -22,4 +27,40 @@
 #right_dir
 {
 	padding-left: 18%;
+}
+
+.barre{
+	height:60px;
+	background: white;
+	color: black;
+	padding: 0px;
+	margin: 0px;
+	border: solid rgb(0,120,200) 2px;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.barre div{
+display: inline-block;
+vertical-align: middle;
+
+}
+
+#temperature{
+	float: left;
+	color: rgb(0,120,200);
+	margin-left: 20px;
+	font-size: 2em;
+}
+
+#heure{
+	float: right;
+	color: rgb(0,120,200);
+	margin-right: 20px;
+	font-size: 2em;
+}
+
+#titre{
+	display: inline-block;
+	font-size: 3em;
 }
