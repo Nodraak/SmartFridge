@@ -29,3 +29,26 @@ def show_list(request):
 
 # trouver les produits associés a la recette
 # TODO
+
+
+from django import forms
+from .models import ArduiSerial, TryAgainError
+
+class DebugForm(forms.Form):
+    order = forms.CharField()
+
+# montrer la liste
+def debug(request):
+    if request.method == 'POST':
+        form = DebugForm(request.POST)
+        if form.is_valid():
+            order = int(form.cleaned_data['order'], 2)
+
+            a = ArduiSerial(port='/dev/ttyACM1')
+
+            ret = a._order_send(order)
+
+            return render(request, 'sf/debug.html', {'ret': ret})
+    else:  # method == GET
+        form = DebugForm(initial={'order': '10000001'})
+    return render(request, 'sf/debug.html', {'form': form})

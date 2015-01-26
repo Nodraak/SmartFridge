@@ -57,10 +57,10 @@ class ArduiSerial(object):
     def _order_send(self, order):
         order = str(order)
         self.ser.write(order)
-        ret = self.ser.read()
+        raw = self.ser.read()
 
         try:
-            ret = struct.unpack('!i', '\00\00\00'+ret)[0]
+            ret = struct.unpack('!i', '\00\00\00'+raw)[0]
         except:
             raise TryAgainError('Try again')
 
