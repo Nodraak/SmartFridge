@@ -1,15 +1,15 @@
 {% extends 'sf/base.html' %}
 
+{% load staticfiles %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/show_list.css' %}">
+{% endblock %}
+
 {% block content %}
-<header>
-	<div class="barre">
-		<div id= "heure">12:00</div>
-		<div id="titre">Liste des aliments</div>
-		<div id="temperature">4°C</div>
-	</div>
-</header>
+
 <div>
-	<table>
+	<table >
 		<tr>
 			<th>Aliment</th>
 			<th>Quantité</th>

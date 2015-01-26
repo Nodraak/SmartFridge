@@ -1,43 +1,3 @@
-html{
-	background-color: rgb(200,200,200);
-}
-
-.barre{
-	height:60px;
-	background: white;
-	color: black;
-	padding: 0px;
-	margin: 0px;
-	border: solid rgb(0,120,200) 2px;
-	border-radius: 5px;
-	text-align: center;
-}
-
-.barre div{
-display: inline-block;
-vertical-align: middle;
-
-}
-
-#temperature{
-	float: left;
-	color: rgb(0,120,200);
-	margin-left: 20px;
-	font-size: 2em;
-}
-
-#heure{
-	float: right;
-	color: rgb(0,120,200);
-	margin-right: 20px;
-	font-size: 2em;
-}
-
-#titre{
-	display: inline-block;
-	font-size: 3em;
-}
-
 table{
 border-collapse: separate;
 	border-spacing: 0px;
@@ -45,6 +5,7 @@ border-collapse: separate;
 	border:solid 1px;
 margin: auto;
 margin-top: 50px;
+color:black;
 }
 
 th{
