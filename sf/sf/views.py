@@ -24,5 +24,9 @@ def new(request):
 def find_recipe(request):
     return render(request, 'sf/find_recipe.html')
 
+# montrer la liste
+def show_list(request):
+    return render(request, 'sf/show_list.html')
+
 # trouver les produits associés a la recette
 # TODO

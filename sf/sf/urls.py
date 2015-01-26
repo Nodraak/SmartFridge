@@ -13,4 +13,5 @@ urlpatterns = patterns('',
     url(r'^get/$', views.get, name='get'),
     url(r'^new/$', views.new, name='new'),
     url(r'^find_recipe/$', views.find_recipe, name='find_recipe'),
+    url(r'^show_list/$', views.show_list, name='show_list'),
 )
