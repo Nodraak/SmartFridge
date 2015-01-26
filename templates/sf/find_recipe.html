@@ -1,5 +1,17 @@
 {% extends 'sf/base.html' %}
 
+{% block menu_find_recipe %}
+active
+{% endblock %}
+
+{% block menu_prev %}
+{% url 'sf:show_list' %}
+{% endblock %}
+
+{% block menu_next %}
+{% url 'sf:new' %}
+{% endblock %}
+
 {% block content %}
 <div class="row">
     <div class="col-sm-12 text-center">

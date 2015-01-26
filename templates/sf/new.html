@@ -1,5 +1,17 @@
 {% extends 'sf/base.html' %}
 
+{% block menu_new %}
+active
+{% endblock %}
+
+{% block menu_prev %}
+{% url 'sf:find_recipe' %}
+{% endblock %}
+
+{% block menu_next %}
+{% url 'sf:is_in_fridge' %}
+{% endblock %}
+
 {% block content %}
 <div class="row">
     <div class="col-sm-12 text-center">

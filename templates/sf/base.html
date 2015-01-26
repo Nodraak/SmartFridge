@@ -25,7 +25,7 @@
                         <h2>12:00</h2>
                     </div>
                     <div class="col-sm-4" id="titre">
-                        <h1>SmartFridge</h1>
+                        <h1><a href="/sf">SmartFridge</a></h1>
                     </div>
                     <div class="col-sm-4" id="temperature">
                         <h2>4°C</h2>
@@ -38,30 +38,30 @@
             <div class="jumbotron">
                 <div class="row" id="navbar">
                     <div class="col-sm-offset-2 col-sm-2">
-                        <a href="http://127.0.0.1:8000/sf/find_recipe/" class="btn btn-primary">
+                        <a href="{% url 'sf:find_recipe' %}" class="btn btn-primary {% block menu_find_recipe %}{% endblock %}">
                             Find Recipe
                         </a>
                     </div>
                     <div class="col-sm-2">
-                        <a href="http://127.0.0.1:8000/sf/new/">
-                            <button type="button" class="btn btn-primary"> New Product </button>
+                        <a href="{% url 'sf:new' %}">
+                            <button type="button" class="btn btn-primary {% block menu_new %}{% endblock %}"> New Product </button>
                         </a>
                     </div>
                     <div class="col-sm-2">
-                        <a href="http://127.0.0.1:8000/sf/is_in_fridge/">
-                            <button type="button" class="btn btn-primary"> Find Product </button>
+                        <a href="{% url 'sf:is_in_fridge' %}">
+                            <button type="button" class="btn btn-primary {% block menu_find_product %}{% endblock %}"> Find Product </button>
                         </a>
                     </div>
                     <div class="col-sm-2">
-                        <a href="http://127.0.0.1:8000/sf/show_list/">
-                            <button type="button" class="btn btn-primary"> Show List </button>
+                        <a href="{% url 'sf:show_list' %}">
+                            <button type="button" class="btn btn-primary {% block menu_show %}{% endblock %}"> Show List </button>
                         </a>
                     </div>
                 </div>
 
                 <div class="row" id="navbar">
                     <div class="col-sm-3 text-center" id="navarrow">
-                        <a href="http://127.0.0.1:8000/sf/find_recipe/">
+                        <a href="{% block menu_prev %}{% endblock %}">
                             <span class="glyphicon glyphicon-circle-arrow-left"></span>
                         </a>
                     </div>
@@ -70,7 +70,7 @@
                         {% endblock %}
                     </div>
                     <div class="col-sm-3 text-center" id="navarrow">
-                        <a href="http://127.0.0.1:8000/sf/is_in_fridge/">
+                        <a href="{% block menu_next %}{% endblock %}">
                             <span class="glyphicon glyphicon-circle-arrow-right"></span>
                         </a>
                     </div>

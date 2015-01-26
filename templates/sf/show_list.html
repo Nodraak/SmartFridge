@@ -2,6 +2,18 @@
 
 {% load staticfiles %}
 
+{% block menu_show %}
+active
+{% endblock %}
+
+{% block menu_prev %}
+{% url 'sf:is_in_fridge' %}
+{% endblock %}
+
+{% block menu_next %}
+{% url 'sf:find_recipe' %}
+{% endblock %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/show_list.css' %}">
 {% endblock %}
