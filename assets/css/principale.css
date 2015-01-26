@@ -1,66 +1,42 @@
-body{
-	background: rgb(200,200,200);
-	color: rgb(0,120,200);
-}
-
-#marque
+body
 {
-	font-family: chalkduster;
-	font-size: 296%;
+    background: rgb(200, 200, 200);
+    color: rgb(0, 120, 200);
 }
 
-#row1
+header #topbar
 {
-	margin: 10% 0 0 0;
+    border-bottom: solid 0.2em rgb(0, 120, 200);
+    margin-bottom: 1em;
 }
 
-#row2
+header #topbar #heure
 {
-	margin: 7.5% 0 0 0;
+    text-align: left;
 }
 
-#left_dir
+header #topbar #titre
 {
-	padding-right: 18%;
+    text-align: center;
 }
 
-#right_dir
+header #topbar #temperature
 {
-	padding-left: 18%;
+    text-align: right;
 }
 
-.barre{
-	height:60px;
-	background: white;
-	color: black;
-	padding: 0px;
-	margin: 0px;
-	border: solid rgb(0,120,200) 2px;
-	border-radius: 5px;
-	text-align: center;
+#navbar
+{
+    margin-bottom: 2em;
 }
 
-.barre div{
-display: inline-block;
-vertical-align: middle;
-
+#navarrow
+{
+   margin-top: 3em;
 }
 
-#temperature{
-	float: left;
-	color: rgb(0,120,200);
-	margin-left: 20px;
-	font-size: 2em;
-}
-
-#heure{
-	float: right;
-	color: rgb(0,120,200);
-	margin-right: 20px;
-	font-size: 2em;
-}
-
-#titre{
-	display: inline-block;
-	font-size: 3em;
+.home_text
+{
+    font-family: chalkduster;
+    font-size: 300%;
 }
