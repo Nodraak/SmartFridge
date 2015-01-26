@@ -4,6 +4,11 @@ body
     color: rgb(0, 120, 200);
 }
 
+.jumbotron
+{
+    padding: 3em;
+}
+
 header #topbar
 {
     border-bottom: solid 0.2em rgb(0, 120, 200);
