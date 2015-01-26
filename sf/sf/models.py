@@ -2,35 +2,21 @@
 # -*- coding: utf-8 -*-
 
 
-import serial
+import serial, struct
 
 from django.db import models
 
-"""
-class Position(object):
 
-    def __init__(self, *arg, **kwarg):
-        self.x = 0
-        self.y = 0
-        #super(Position, self).__init__(*arg, **kwarg)
+class Position(models.Model):
 
-    def get_x(self):
-        return self.x
+    x = models.PositiveSmallIntegerField()
+    y = models.PositiveSmallIntegerField()
 
-    def get_y(self):
-        return self.y
-
-    def set_x(self, x):
-        self.x = x
-
-    def set_y(self, y):
-        self.y = y
-"""
 
 class Product(models.Model):
 
     def __init__(self, *arg, **kwarg):
-        #self.position = Position()
+        self.position = Position()
         super(Product, self).__init__(*arg, **kwarg)
 
     name = models.CharField(max_length=128)
@@ -51,13 +37,17 @@ class SensorError(ArduiSerialError):
 class ResponseError(ArduiSerialError):
     pass
 
+class TryAgainError(ArduiSerialError):
+    pass
+
 class ArduiSerial(object):
 
-    def __init__(self, port, bauds=9600, timeout=1):
+    def __init__(self, port='/dev/ttyACM0', bauds=9600, timeout=1):
         self.STATUS_SUCCESS = 0
         self.STATUS_INVALID = 1
         self.STATUS_FALSE = 2
         self.STATUS_TRUE = 3
+        self.STATUS_UNKNOWN = 4
 
         self.ser = serial.Serial(port, bauds, timeout=timeout)
 
@@ -65,8 +55,14 @@ class ArduiSerial(object):
         self.ser.close()
 
     def _order_send(self, order):
+        order = str(order)
         self.ser.write(order)
         ret = self.ser.read()
+
+        try:
+            ret = struct.unpack('!i', '\00\00\00'+ret)[0]
+        except:
+            raise TryAgainError('Try again')
 
         if ret == 0b10101010:  # success
             return self.STATUS_SUCCESS
@@ -77,6 +73,8 @@ class ArduiSerial(object):
             return self.STATUS_FALSE
         elif ret == 0b00000001:  # true / on
             return self.STATUS_TRUE
+        else:
+            return self.STATUS_UNKNOWN
 
     def order_move(self, x, y):
         x, y = int(x), int(y)
@@ -99,6 +97,6 @@ class ArduiSerial(object):
         id = int(id)
         if id < 0 or id > 3:
             raise SensorError('Parameter not in bounds')
-        order = 0b10 | id
+        order = (0b10 << 6) | id
         return self._order_send(order)
 
