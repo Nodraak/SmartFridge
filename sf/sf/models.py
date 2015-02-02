@@ -13,16 +13,19 @@ class Position(models.Model):
     y = models.PositiveSmallIntegerField()
 
 
-class Product(models.Model):
+    def __unicode__(self):
+        return 'x=%d y=%d' % ((self.x, self.y))
 
-    def __init__(self, *arg, **kwarg):
-        self.position = Position()
-        super(Product, self).__init__(*arg, **kwarg)
+class Product(models.Model):
 
     name = models.CharField(max_length=128)
     expire = models.DateField()
     nb = models.PositiveSmallIntegerField(default=1)
     calorie = models.PositiveSmallIntegerField()
+    position = models.ForeignKey(Position)
+
+    def __unicode__(self):
+        return self.name
 
 
 class ArduiSerialError(Exception):
