@@ -21,9 +21,36 @@ active
 
 <div class="row">
     <div class="col-sm-12">
+        <form role="form" method="post" action="{% url 'sf:find_product' %}">
+            {% csrf_token %}
+
+            {% if error %}
+                <small class="error">{{ error }}</small>
+            {% endif %}
+
+            {% for field in form %}
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% for error in field.errors %}
+                            <small class="error">{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 text-center">
+                    <button type="submit" class="btn btn-primary">Chercher</button>
+                </div>
+            </div>
+        </form>
+
+<!--
         <form role="form">
             <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
+                <div class="">
                     <div class="form-group">
                         <label for="produit">Produit:</label>
                         <input type="produit" class="form-control" id="produit" placeholder="Entrer le nom du produit">
@@ -52,8 +79,7 @@ active
                 <div class="col-sm-6 col-sm-offset-3 text-center">
                     <button type="button" class="btn btn-primary">Chercher</button>
                 </div>
-            </div>
-        </form>
+            </div>-->
     </div>
 </div>
 {% endblock %}

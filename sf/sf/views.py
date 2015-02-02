@@ -1,17 +1,37 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import Product
+from .forms import FindForm
 
 # home
 def index(request):
     return render(request, 'sf/index.html')
 
 # trouver si produit est ds le frigo
-def is_in_fridge(request):
-    return render(request, 'sf/is_in_fridge.html')
+def find_product(request):
+
+    if request.method == 'GET':
+        c = {
+            'form': FindForm(),
+        }
+        return render(request, 'sf/find_product.html', c)
+    else:  # POST
+        form = FindForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+
+
+            return redirect('sf:find_product')
+        else:  # ie. not valid
+            c = {
+                'form': form,
+            }
+            return render(request, 'sf/find_product.html', c)
+
+    return render(request, 'sf/find_product.html')
 
 # sortir un produit + liaison serie
 def get(request):
