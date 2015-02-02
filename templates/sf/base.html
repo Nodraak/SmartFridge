@@ -61,18 +61,22 @@
 
                 <div class="row" id="navbar">
                     <div class="col-sm-2 text-center" id="navarrow">
-                        <a href="{% block menu_prev %}{% endblock %}">
-                            <span class="glyphicon glyphicon-circle-arrow-left"></span>
-                        </a>
+                        {% if request.path != '/sf/' %}
+                            <a href="{% block menu_prev %}{% endblock %}">
+                                <span class="glyphicon glyphicon-circle-arrow-left"></span>
+                            </a>
+                        {% endif %}
                     </div>
                     <div class="col-sm-8">
                         {% block content %}
                         {% endblock %}
                     </div>
                     <div class="col-sm-2 text-center" id="navarrow">
-                        <a href="{% block menu_next %}{% endblock %}">
-                            <span class="glyphicon glyphicon-circle-arrow-right"></span>
-                        </a>
+                        {% if request.path != '/sf/' %}
+                            <a href="{% block menu_next %}{% endblock %}">
+                                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
