@@ -3,6 +3,8 @@
 
 from django.shortcuts import render
 
+from .models import Product
+
 # home
 def index(request):
     return render(request, 'sf/index.html')
@@ -25,14 +27,20 @@ def find_recipe(request):
 
 # montrer la liste
 def show_list(request):
-    return render(request, 'sf/show_list.html')
+    p = Product.objects.all()
+
+    c = {
+        'products': p,
+    }
+
+    return render(request, 'sf/show_list.html', c)
 
 # trouver les produits associés a la recette
 # TODO
 
 
 from django import forms
-from .models import ArduiSerial, TryAgainError
+from .models import ArduiSerial
 
 class DebugForm(forms.Form):
     order = forms.CharField()
