@@ -14,43 +14,33 @@ active
 {% url 'sf:find_recipe' %}
 {% endblock %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/show_list.css' %}">
-{% endblock %}
-
 {% block content %}
 
 <div>
-	<table >
-		<tr>
-			<th>Aliment</th>
-			<th>Quantité</th>
-			<th>Localisation</th>
-			<th>Date d'ajout</th>
-			<th>Date de peremption</th>
-			<th>Calories</th>
-		</tr>
-
-		<tr>
-			<td>Tomate</td>
-			<td>5</td>
-			<td>Bac 2</td>
-			<td>16/01/15</td>
-			<td>30/01/15</td>
-			<td>20</td>
-		</tr>
-
-		<tr>
-			<td>Bière</td>
-			<td>10</td>
-			<td>Bac 8</td>
-			<td>16/01/15</td>
-			<td>14/02/15</td>
-			<td>43</td>
-		</tr>
-
-	</table>
-
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Aliment</th>
+                <th>Quantité</th>
+                <th>Localisation</th>
+                <th>Date d'ajout</th>
+                <th>Date de peremption</th>
+                <th>Calories</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in products %}
+                <tr>
+                    <td>{{ p.name }}</td>
+                    <td>{{ p.nb }}</td>
+                    <td>{{ p.position }}</td>
+                    <td>xx</td>
+                    <td>{{ p.expire }}</td>
+                    <td>{{ p.calorie }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 
 {% endblock %}
