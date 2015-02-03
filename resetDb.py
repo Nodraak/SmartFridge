@@ -17,6 +17,8 @@ print '=> Done'
 # sync db
 print '=> Sync db + migrate'
 system('python manage.py syncdb --noinput')
+system('python manage.py makemigrations')
+system('python manage.py migrate')
 print '=> Done'
 
 ###########
