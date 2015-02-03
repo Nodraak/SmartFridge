@@ -73,6 +73,11 @@ def find_product(request):
             elif pos:
                 p = Product.objects.filter(position__x=pos.x, position__y=pos.y)
 
+            if p.count() != 1:
+                print 'Oh shit !!'
+
+            p = p[0]
+
             c = {
                 'product': p,
             }

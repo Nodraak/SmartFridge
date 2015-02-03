@@ -68,9 +68,10 @@ class FindForm(forms.Form):
             msg = ''
             if count == 0:
                 msg = 'Aucun produit trouvé.'
+                self._errors['name'] = self.error_class([msg])
             elif count > 1:
                 msg = 'Plusieurs produits trouvés.'
-            self._errors['name'] = self.error_class([msg])
+                self._errors['name'] = self.error_class([msg])
 
         position = cleaned_data.get('position')
         if position:

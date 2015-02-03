@@ -52,11 +52,11 @@ active
         {% else %}
             <p>
                 <ul>
-                    <li>{{ p.name }}</li>
-                    <li>{{ p.expire }}</li>
-                    <li>{{ p.nb }}</li>
-                    <li>{{ p.calorie }}</li>
-                    <li>{{ p.position }}</li>
+                    <li>Nom : {{ product.name }}</li>
+                    <li>Date de peremption : {{ product.expire }}</li>
+                    <li>Quantité : {{ product.nb }}</li>
+                    <li>Calories : {{ product.calorie }}</li>
+                    <li>Position (osef) : {{ product.position }}</li>
                 </ul>
             </p>
         {% endif %}
