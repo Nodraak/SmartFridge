@@ -45,3 +45,8 @@ header #topbar #temperature
     font-family: chalkduster;
     font-size: 300%;
 }
+
+.error
+{
+    color: red;
+}

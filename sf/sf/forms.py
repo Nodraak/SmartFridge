@@ -24,6 +24,11 @@ class NewForm(forms.Form):
 
     expire = forms.DateField(
         label='Date de péremption ',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'jj/mm/aaaa'
+            }
+        ),
     )
 
 
