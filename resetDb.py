@@ -45,7 +45,7 @@ code = (
     "    p.name = f.word()",
     "    p.expire = f.date_time_between(start_date='now', end_date='+30d')",
     "    p.nb = f.random_int(min=0, max=10)",
-    "    p.calorie = f.random_int(min=0, max=1000)",
+    "    p.calorie = f.random_int(min=0, max=400)",
     "    p.save()",
     "",
 )

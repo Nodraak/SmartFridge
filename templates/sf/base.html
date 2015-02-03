@@ -37,14 +37,14 @@
         <div class="container">
             <div class="jumbotron">
                 <div class="row" id="navbar">
-                    <div class="col-sm-offset-2 col-sm-2">
-                        <a href="{% url 'sf:find_recipe' %}" class="btn btn-primary {% block menu_find_recipe %}{% endblock %}">
-                            Find Recipe
+                    <div class="col-sm-2 col-sm-offset-2">
+                        <a href="{% url 'sf:new' %}">
+                            <button type="button" class="btn btn-primary {% block menu_new %}{% endblock %}"> New Product </button>
                         </a>
                     </div>
                     <div class="col-sm-2">
-                        <a href="{% url 'sf:new' %}">
-                            <button type="button" class="btn btn-primary {% block menu_new %}{% endblock %}"> New Product </button>
+                        <a href="{% url 'sf:show_list' %}">
+                            <button type="button" class="btn btn-primary {% block menu_show %}{% endblock %}"> Show List </button>
                         </a>
                     </div>
                     <div class="col-sm-2">
@@ -53,8 +53,8 @@
                         </a>
                     </div>
                     <div class="col-sm-2">
-                        <a href="{% url 'sf:show_list' %}">
-                            <button type="button" class="btn btn-primary {% block menu_show %}{% endblock %}"> Show List </button>
+                        <a href="{% url 'sf:find_recipe' %}" class="btn btn-primary {% block menu_find_recipe %}{% endblock %}">
+                            Find Recipe
                         </a>
                     </div>
                 </div>

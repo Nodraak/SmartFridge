@@ -32,7 +32,7 @@ def new(request):
             p.position = Position(0, 0)  # TODO
             p.save()
 
-            return redirect('sf:new')
+            return redirect('sf:show_list')
         else:  # ie. not valid
             c = {
                 'form': form,
