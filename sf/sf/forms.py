@@ -17,7 +17,7 @@ class NewForm(forms.Form):
         ),
     )
 
-    number = forms.PositiveSmallIntegerField(
+    number = forms.IntegerField(
         label='Nombre',
         initial=1,
     )

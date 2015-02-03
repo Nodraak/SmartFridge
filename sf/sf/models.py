@@ -16,6 +16,7 @@ class Position(models.Model):
     def __unicode__(self):
         return 'x=%d y=%d' % ((self.x, self.y))
 
+
 class Product(models.Model):
 
     name = models.CharField(max_length=128)

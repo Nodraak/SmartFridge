@@ -30,7 +30,7 @@ active
 
             {% for field in form %}
                 <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
+                    <div class="col-sm-8 col-sm-offset-2">
                         <div class="form-group">
                             {{ field.label_tag }}
                             {{ field }}
@@ -41,45 +41,13 @@ active
                     </div>
                 </div>
             {% endfor %}
-        </form>
-            <!--<div class="row">
-                <div class="col-sm-6 col-sm-offset-3 text-center">
-                    <button type="submit" class="btn btn-primary">Chercher</button>
-                </div>
-            </div>
-        </form>
 
-        <form role="form">
-            <div class="row" >
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div class="form-group">
-                        <label for="name">Nom :</label>
-                        <input type="text" class="form-control" id="name">
-                    </div>
-                </div>
-            </div>
-            <div class="row" >
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div class="form-group">
-                        <label for="number">Nombre :</label>
-                        <input type="number" class="form-control" id="number">
-                    </div>
-                </div>
-            </div>
-            <div class="row" >
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div class="form-group">
-                        <label for="peremption">Date de péremption :</label>
-                        <input type="date" class="form-control" id="peremption">
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3 text-center">
                     <button type="button" class="btn btn-primary">Valider l'ajout</button>
                 </div>
             </div>
-        </form>-->
+        </form>
     </div>
 </div>
 {% endblock %}
