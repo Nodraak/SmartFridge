@@ -9,7 +9,7 @@ active
 {% endblock %}
 
 {% block menu_next %}
-{% url 'sf:is_in_fridge' %}
+{% url 'sf:find_product' %}
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,35 @@ active
 </div>
 
 <div class="row" >
-    <div class="col-sm-12">
+    <div role="form" class="col-sm-12">
+        <form role="form" method="post" action="{% url 'sf:new' %}">
+            {% csrf_token %}
+
+            {% if error %}
+                <small class="error">{{ error }}</small>
+            {% endif %}
+
+            {% for field in form %}
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="form-group">
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {% for error in field.errors %}
+                                <small class="error">{{ error }}</small>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </form>
+            <!--<div class="row">
+                <div class="col-sm-6 col-sm-offset-3 text-center">
+                    <button type="submit" class="btn btn-primary">Chercher</button>
+                </div>
+            </div>
+        </form>
+
         <form role="form">
             <div class="row" >
                 <div class="col-sm-6 col-sm-offset-3">
@@ -51,7 +79,7 @@ active
                     <button type="button" class="btn btn-primary">Valider l'ajout</button>
                 </div>
             </div>
-        </form>
+        </form>-->
     </div>
 </div>
 {% endblock %}
