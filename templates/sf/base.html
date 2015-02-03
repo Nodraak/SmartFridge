@@ -61,7 +61,7 @@
 
                 <div class="row" id="navbar">
                     <div class="col-sm-2 text-center" id="navarrow">
-                        {% if request.path != '/sf/' %}
+                        {% if request.path != '/sf/' and request.path != '/sf/get/' %}
                             <a href="{% block menu_prev %}{% endblock %}">
                                 <span class="glyphicon glyphicon-circle-arrow-left"></span>
                             </a>
@@ -72,7 +72,7 @@
                         {% endblock %}
                     </div>
                     <div class="col-sm-2 text-center" id="navarrow">
-                        {% if request.path != '/sf/' %}
+                        {% if request.path != '/sf/' and request.path != '/sf/get/' %}
                             <a href="{% block menu_next %}{% endblock %}">
                                 <span class="glyphicon glyphicon-circle-arrow-right"></span>
                             </a>

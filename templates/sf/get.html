@@ -4,26 +4,15 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 text-center">
-        <h2>Que voulez-vous récuperer du SmartFridge ?</h2>
+        <h2>Validez la sortie du frigo ?</h2>
       </div>
     </div>
-
-    <form role="form">
-      <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-          <div class="form-group">
-            <label for="produit">ID ? :</label>
-            <input type="produit" class="form-control" id="produit" placeholder="Entrer le nom du produit">
-          </div>
-        </div>
-        <div class="col-sm-4"></div>
-      </div>
 
       <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4 text-center">
-          <button type="button" class="btn btn-primary ">Chercher</button>
+          <a href=""><button type="button" class="btn btn-primary ">Valider</button></a>
+          <a href="{% url 'sf:find_product' %}"><button type="button" class="btn btn-primary ">Retour</button></a>
         </div>
 
         <div class="col-sm-4"></div>
