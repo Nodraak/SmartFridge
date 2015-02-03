@@ -2,9 +2,30 @@
 # -*- coding: utf-8 -*-
 
 from django import forms
-from django.conf import settings
 
 from .models import Product
+
+
+class NewForm(forms.Form):
+
+    name = forms.CharField(
+        label='Nom',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Biere'
+            }
+        ),
+    )
+
+    number = forms.PositiveSmallIntegerField(
+        label='Nombre',
+        initial=1,
+    )
+
+    expire = forms.DateField(
+        label='Date de péremption ',
+    )
+
 
 class FindForm(forms.Form):
 

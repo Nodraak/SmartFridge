@@ -13,6 +13,13 @@ class Position(models.Model):
     y = models.PositiveSmallIntegerField()
 
 
+    def __init__(self, *arg, **kwarg, x=None, y=None):
+        super(self, Position).__init__(*arg, **kwarg)
+        if x != None and y != None:
+            self.x = x
+            self.y = y
+            self.save()
+
     def __unicode__(self):
         return 'x=%d y=%d' % ((self.x, self.y))
 
