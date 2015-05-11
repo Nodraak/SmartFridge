@@ -12,7 +12,6 @@ class Position(models.Model):
     x = models.PositiveSmallIntegerField()
     y = models.PositiveSmallIntegerField()
 
-
     def __unicode__(self):
         return 'x=%d y=%d' % ((self.x, self.y))
 
@@ -54,9 +53,10 @@ class ArduiSerial(object):
         self.STATUS_UNKNOWN = 4
 
         self.ser = serial.Serial(port, bauds, timeout=timeout)
+        self.ser.read()
 
-    def __del__(self):
-        self.ser.close()
+    #def __del__(self):
+    #    self.ser.close()
 
     def _order_send(self, order):
         order = str(order)

@@ -3,10 +3,9 @@
 
 from django.shortcuts import render, redirect
 
-from .models import Product, Position
+from .models import Product, Position, ArduiSerial
 from .forms import NewForm, FindForm
 
-from .models import Product
 
 # home
 def index(request):
