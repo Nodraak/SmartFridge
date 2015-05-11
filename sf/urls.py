@@ -3,7 +3,6 @@
 
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from django.views.generic import RedirectView
 
 
 urlpatterns = patterns('',
@@ -13,5 +12,4 @@ urlpatterns = patterns('',
 
     url(r'^a/', include(admin.site.urls)),
     url(r'^sf/', include('sf.sf.urls', namespace='sf')),
-    url(r'^$', RedirectView.as_view(url='/sf/')),
 )

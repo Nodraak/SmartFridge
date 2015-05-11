@@ -44,16 +44,6 @@ class FindForm(forms.Form):
         required=False,
     )
 
-    position = forms.CharField(
-        label='Position',
-        widget=forms.TextInput(
-            attrs={
-                'placeholder': 'x;y'
-            }
-        ),
-        required=False,
-    )
-
     retrieve = forms.BooleanField(
         label='Recuperer',
         required=False
@@ -72,12 +62,5 @@ class FindForm(forms.Form):
             elif count > 1:
                 msg = 'Plusieurs produits trouvés.'
                 self._errors['name'] = self.error_class([msg])
-
-        position = cleaned_data.get('position')
-        if position:
-            px, py = [int(i) for i in position.split(';')]
-            if Product.objects.filter(position__x=px, position__y=py).count() != 1:
-                msg = 'Produit non trouvé.'
-                self._errors['position'] = self.error_class([msg])
 
         return cleaned_data
