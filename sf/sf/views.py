@@ -76,12 +76,14 @@ def find_product(request):
                 raise IndexError
             p = p[0]
 
+            """
             if retrieve:
                 print 'GET !!'
                 a = ArduiSerial(port='/dev/ttyACM0')
                 print 'port opened'
                 ret = a.order_move(1, 2)
                 print 'order send : %x ==? %x' % (ret, ArduiSerial().STATUS_SUCCESS)
+            """
 
             c = {
                 'product': p,

@@ -9,4 +9,5 @@ urlpatterns = patterns(
     '',
     url(r'^a/', include(admin.site.urls)),
     url(r'^sf/', include('sf.sf.urls', namespace='sf')),
+    url(r'^api/', include('sf.api.urls', namespace='api')),
 )
