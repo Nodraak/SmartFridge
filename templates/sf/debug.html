@@ -10,10 +10,20 @@
 <div class="row">
     <div class="col-sm-6">
         <ul>
-            <li>order_move : (0b00 << 6) | (x << 3) | y</li>
-            <li>order_cooling : (0b01 << 6) | value</li>
-            <li>get_cooling : (0b01 << 6) | 0b10</li>
-            <li>get_sensors : (0b10 << 6) | id</li>
+            <li>SFP8_MASK_ORDER = 0b11000000</li>
+            <li>SFP8_MASK_DATA = 0b00111111</li>
+        </ul>
+        <ul>
+            <li>SFP8_ORDER_GOTO = 0b00000000</li>
+            <li>SFP8_ORDER_PUSH = 0b01000000</li>
+            <li>SFP8_ORDER_COOLING = 0b10000000</li>
+            <li>SFP8_ORDER_SENSOR = 0b11000000</li>
+        </ul>
+        <ul>
+            <li>SFP8_TRUE = 0b00000001</li>
+            <li>SFP8_FALSE = 0b00000000</li>
+            <li>SFP8_SUCCESS = 0b11111111</li>
+            <li>SFP8_INVALID = 0b00000000</li>
         </ul>
     </div>
 

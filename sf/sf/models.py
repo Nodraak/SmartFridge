@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 
-import serial, struct
-
+import serial
+import struct
 from django.db import models
 
 
@@ -31,26 +31,45 @@ class Product(models.Model):
 class ArduiSerialError(Exception):
     pass
 
+
 class MoveError(ArduiSerialError):
     pass
+
 
 class SensorError(ArduiSerialError):
     pass
 
+
 class ResponseError(ArduiSerialError):
     pass
+
 
 class TryAgainError(ArduiSerialError):
     pass
 
+
+SFP8_MASK_ORDER = 0b11000000
+SFP8_MASK_DATA = 0b00111111
+
+SFP8_ORDER_GOTO = 0b00000000
+SFP8_ORDER_PUSH = 0b01000000
+SFP8_ORDER_COOLING = 0b10000000
+SFP8_ORDER_SENSOR = 0b11000000
+
+SFP8_TRUE = 0b00000001
+SFP8_FALSE = 0b00000000
+SFP8_SUCCESS = 0b11111111
+SFP8_INVALID = 0b00000000
+
+
 class ArduiSerial(object):
 
     def __init__(self, port='/dev/ttyACM0', bauds=9600, timeout=1):
-        self.STATUS_SUCCESS = 0
-        self.STATUS_INVALID = 1
-        self.STATUS_FALSE = 2
-        self.STATUS_TRUE = 3
-        self.STATUS_UNKNOWN = 4
+        self.STATUS_SUCCESS = SFP8_SUCCESS
+        self.STATUS_INVALID = SFP8_INVALID
+        self.STATUS_FALSE = SFP8_FALSE
+        self.STATUS_TRUE = SFP8_TRUE
+        self.STATUS_UNKNOWN = 42
 
         self.ser = serial.Serial(port, bauds, timeout=timeout)
         self.ser.read()
@@ -68,39 +87,35 @@ class ArduiSerial(object):
         except:
             raise TryAgainError('Try again')
 
-        if ret == 0b10101010:  # success
+        if ret == SFP8_SUCCESS:  # success
             return self.STATUS_SUCCESS
-        elif ret == 0b11111111:  # invalid request
+        elif ret == SFP8_INVALID:  # invalid request
             raise ResponseError('Invalid request')
             return self.STATUS_INVALID
-        elif ret == 0b00000000:  # false / off
+        elif ret == SFP8_FALSE:  # false / off
             return self.STATUS_FALSE
-        elif ret == 0b00000001:  # true / on
+        elif ret == SFP8_TRUE:  # true / on
             return self.STATUS_TRUE
         else:
             return self.STATUS_UNKNOWN
 
-    def order_move(self, x, y):
-        x, y = int(x), int(y)
-        if x < 0 or x > 7 or y < 0 or y > 7:
+    def order_floor_go(self, i):
+        i = int(i)
+        if i not in range(0, 5):
             raise MoveError('Parameters not in bounds')
         else:
-            order = (0b00 << 6) | (x << 3) | y
+            order = SFP8_ORDER_GOTO | int(i)
+            return self._order_send(order)
+
+    def order_floor_push(self, i):
+        i = int(i)
+        if i not in range(0, 5):
+            raise MoveError('Parameters not in bounds')
+        else:
+            order = SFP8_ORDER_PUSH | int(i)
             return self._order_send(order)
 
     def order_cooling(self, value):
         value = bool(value)
-        order = (0b01 << 6) | value
+        order = SFP8_ORDER_COOLING | value
         return self._order_send(order)
-
-    def get_cooling(self):
-        order = (0b01 << 6) | 0b10
-        return self._order_send(order)
-
-    def get_sensors(self, id):
-        id = int(id)
-        if id < 0 or id > 3:
-            raise SensorError('Parameter not in bounds')
-        order = (0b10 << 6) | id
-        return self._order_send(order)
-

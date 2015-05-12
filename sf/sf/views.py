@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import render, redirect
+from django import forms
 
 from .models import Product, Position, ArduiSerial
 from .forms import NewForm, FindForm
@@ -79,7 +80,7 @@ def find_product(request):
             """
             if retrieve:
                 print 'GET !!'
-                a = ArduiSerial(port='/dev/ttyACM0')
+                a = ArduiSerial()
                 print 'port opened'
                 ret = a.order_move(1, 2)
                 print 'order send : %x ==? %x' % (ret, ArduiSerial().STATUS_SUCCESS)
@@ -108,14 +109,6 @@ def find_recipe(request):
     return render(request, 'sf/find_recipe.html')
 
 
-# trouver les produits associés a la recette
-# TODO
-
-
-from django import forms
-from .models import ArduiSerial
-
-
 class DebugForm(forms.Form):
     order = forms.CharField()
 
@@ -127,7 +120,7 @@ def debug(request):
         if form.is_valid():
             order = int(form.cleaned_data['order'], 2)
 
-            a = ArduiSerial(port='/dev/ttyACM1')
+            a = ArduiSerial()
 
             ret = a._order_send(order)
 
