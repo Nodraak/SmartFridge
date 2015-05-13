@@ -1,0 +1,2 @@
+L'ancienne url etait : http://nodraak.fr:8000/
+Merci d'utiliser la nouvelle : http://pste.nodraak.fr/
