@@ -8,7 +8,7 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <ul>
             <li>SFP8_MASK_ORDER = 0b11000000</li>
             <li>SFP8_MASK_DATA = 0b00111111</li>
@@ -26,6 +26,84 @@
             <li>SFP8_INVALID = 0b00000000</li>
         </ul>
     </div>
+    <div class="col-sm-3">
+        <ul>
+            <li>
+                <form method="POST" action=".">
+                    {% csrf_token %}
+                    <input name="order" type="hidden" value="01000000" />
+                    <button type="submit" class="button-admin tiny">push 0</button>
+                </form>
+            </li>
+            <li>
+                <form method="POST" action=".">
+                    {% csrf_token %}
+                    <input name="order" type="hidden" value="01000001" />
+                    <button type="submit" class="button-admin tiny">push 1</button>
+                </form>
+            </li>
+            <li>
+                <form method="POST" action=".">
+                    {% csrf_token %}
+                    <input name="order" type="hidden" value="01000002" />
+                    <button type="submit" class="button-admin tiny">push 2</button>
+                </form>
+            </li>
+            <li>
+                <form method="POST" action=".">
+                    {% csrf_token %}
+                    <input name="order" type="hidden" value="01000003" />
+                    <button type="submit" class="button-admin tiny">push 3</button>
+                </form>
+            </li>
+            <li>
+                <form method="POST" action=".">
+                    {% csrf_token %}
+                    <input name="order" type="hidden" value="01000004" />
+                    <button type="submit" class="button-admin tiny">push 4</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-3">
+        <ul>
+            <li>
+                <form method="POST" action=".">
+                    {% csrf_token %}
+                    <input name="order" type="hidden" value="00000000" />
+                    <button type="submit" class="button-admin tiny">goto 0</button>
+                </form>
+            </li>
+            <li>
+                <form method="POST" action=".">
+                    {% csrf_token %}
+                    <input name="order" type="hidden" value="00000001" />
+                    <button type="submit" class="button-admin tiny">goto 1</button>
+                </form>
+            </li>
+            <li>
+                <form method="POST" action=".">
+                    {% csrf_token %}
+                    <input name="order" type="hidden" value="00000002" />
+                    <button type="submit" class="button-admin tiny">goto 2</button>
+                </form>
+            </li>
+            <li>
+                <form method="POST" action=".">
+                    {% csrf_token %}
+                    <input name="order" type="hidden" value="00000003" />
+                    <button type="submit" class="button-admin tiny">goto 3</button>
+                </form>
+            </li>
+            <li>
+                <form method="POST" action=".">
+                    {% csrf_token %}
+                    <input name="order" type="hidden" value="00000004" />
+                    <button type="submit" class="button-admin tiny">goto 4</button>
+                </form>
+            </li>
+        </ul>
+    </div>
 </div>
 <div class="row">
     <div class="col-sm-12 form-group">
@@ -36,7 +114,6 @@
                 {{ field.label_tag }}
                 {{ field }}
             {% endfor %}
-            <br />
             <button type="submit" class="btn btn-primary">Envoyer</button>
         </form>
     </div>
