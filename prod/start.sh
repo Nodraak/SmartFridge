@@ -12,9 +12,8 @@ USER=$USER
 GROUP=$GROUP
 
 cd $WORKINGDIR
-source ../bin/activate
-exec ../bin/gunicorn SmartFridge.wsgi:application \
--b localhost:8000 \
+exec /usr/local/bin/gunicorn sf.wsgi:application \
+-b localhost:8001 \
 --timeout=300 \
 --workers $NUM_WORKERS \
 --name=SmartFridge \
