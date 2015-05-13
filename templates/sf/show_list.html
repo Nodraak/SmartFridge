@@ -24,6 +24,7 @@ active
                 <th>Quantité</th>
                 <th>Date de peremption</th>
                 <th>Calories</th>
+                <th>Récuperer ?</th>
             </tr>
         </thead>
         <tbody>
@@ -33,6 +34,14 @@ active
                     <td>{{ p.nb }}</td>
                     <td>{{ p.expire }}</td>
                     <td>{{ p.calorie }}</td>
+                    <td>
+                        <form method="POST" action="/sf/find_product/">
+                            {% csrf_token %}
+                            <input name="name" type="hidden" value="{{ p.name }}" />
+                            <input name="retrieve" type="hidden" value="1" />
+                            <button type="submit" class="button-admin tiny">Get</button>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

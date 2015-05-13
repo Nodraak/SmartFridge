@@ -119,3 +119,8 @@ class ArduiSerial(object):
         value = bool(value)
         order = SFP8_ORDER_COOLING | value
         return self._order_send(order)
+
+    def get_product(self, product):
+        floor = 2  # product.position not implemented
+        self.order_floor_go(floor)
+        self.order_floor_push(floor)

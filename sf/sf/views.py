@@ -70,21 +70,17 @@ def find_product(request):
         form = FindForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
-            retrieve = form.cleaned_data['name']
+            retrieve = form.cleaned_data['retrieve']
             p = Product.objects.filter(name=name)
             if p.count() != 1:
                 print 'Oh shit !!'
                 raise IndexError
             p = p[0]
 
-            """
             if retrieve:
-                print 'GET !!'
                 a = ArduiSerial()
-                print 'port opened'
-                ret = a.order_move(1, 2)
-                print 'order send : %x ==? %x' % (ret, ArduiSerial().STATUS_SUCCESS)
-            """
+                ret = a.get_product(p)
+                print 'GET %s : ret=%d' % (name, ret)
 
             c = {
                 'product': p,
