@@ -85,7 +85,7 @@ class ArduiSerial(object):
         try:
             ret = struct.unpack('!i', '\00\00\00'+raw)[0]
         except:
-            raise TryAgainError('Try again')
+            return self.STATUS_UNKNOWN
 
         if ret == SFP8_SUCCESS:  # success
             return self.STATUS_SUCCESS

@@ -80,7 +80,6 @@ def find_product(request):
             if retrieve:
                 a = ArduiSerial()
                 ret = a.get_product(p)
-                print 'GET %s : ret=%d' % (name, ret)
 
             c = {
                 'product': p,
